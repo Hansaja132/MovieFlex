@@ -1,0 +1,68 @@
+.hero {
+    position: relative;
+    min-height: 58vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        radial-gradient(circle at 75% 18%, rgba(203, 45, 36, 0.45), transparent 28%),
+        linear-gradient(120deg, #1e273f, #12192a 55%, #131316);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8, 9, 14, 0.26), rgba(8, 9, 14, 0.76));
+}
+
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: 0.25;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    padding: 5rem 0;
+    animation: fade-up 480ms ease;
+}
+
+.eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    font-size: 0.78rem;
+}
+
+.hero h1 {
+    margin: 0.6rem 0;
+    font-family: var(--font-display);
+    line-height: 1.1;
+    font-size: clamp(1.9rem, 4.2vw, 3.4rem);
+}
+
+.hero p {
+    margin: 0 0 1.4rem;
+    color: var(--text-dim);
+    font-size: 1.05rem;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

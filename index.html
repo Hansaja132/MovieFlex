@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieFlex | Discover Movies</title>
+    <meta name="description" content="Discover popular, now playing, and upcoming movies with MovieFlex." />
+    <link rel="stylesheet" href="/src/css/main.css" />
+  </head>
+  <body data-page="home">
+    <div id="app-shell">
+      <header id="site-header"></header>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero__overlay"></div>
+          <div class="container hero__content">
+            <p class="eyebrow">Your Daily Cinema Guide</p>
+            <h1 id="hero-title">Find Your Next Favorite Movie Tonight</h1>
+            <p>
+              Explore trending blockbusters, fresh releases, and upcoming gems with real-time data from
+              TMDB.
+            </p>
+            <a class="btn btn--primary" href="search.html">Search Movies</a>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="popular-title">
+          <div class="container">
+            <h2 id="popular-title" class="section__title">Popular Movies</h2>
+            <div id="popular-state" class="state" aria-live="polite"></div>
+            <div id="popular-grid" class="movie-grid"></div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="now-playing-title">
+          <div class="container">
+            <h2 id="now-playing-title" class="section__title">Latest / Now Playing</h2>
+            <div id="now-playing-state" class="state" aria-live="polite"></div>
+            <div id="now-playing-grid" class="movie-grid"></div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="upcoming-title">
+          <div class="container">
+            <h2 id="upcoming-title" class="section__title">Upcoming Movies</h2>
+            <div id="upcoming-state" class="state" aria-live="polite"></div>
+            <div id="upcoming-grid" class="movie-grid"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer"></footer>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

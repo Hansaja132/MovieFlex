@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieFlex | Movie Details</title>
+    <meta name="description" content="Detailed movie information from TMDB." />
+    <link rel="stylesheet" href="/src/css/main.css" />
+  </head>
+  <body data-page="movie">
+    <div id="app-shell">
+      <header id="site-header"></header>
+
+      <main>
+        <section id="movie-backdrop" class="movie-backdrop">
+          <div class="movie-backdrop__overlay"></div>
+        </section>
+
+        <section class="section movie-details">
+          <div class="container">
+            <div id="movie-state" class="state" aria-live="polite"></div>
+
+            <article id="movie-details-card" class="movie-details-card hidden" aria-live="polite">
+              <img id="movie-poster" class="movie-details-card__poster" alt="Movie poster" />
+
+              <div class="movie-details-card__content">
+                <h1 id="movie-title"></h1>
+                <p id="movie-overview" class="movie-details-card__overview"></p>
+
+                <ul class="movie-meta">
+                  <li><strong>Rating:</strong> <span id="movie-rating"></span></li>
+                  <li><strong>Release Date:</strong> <span id="movie-release-date"></span></li>
+                  <li><strong>Genres:</strong> <span id="movie-genres"></span></li>
+                </ul>
+
+                <section class="trailer-placeholder" aria-labelledby="trailer-title">
+                  <h2 id="trailer-title">Trailer</h2>
+                  <p>Trailer section placeholder. You can add TMDB videos integration later.</p>
+                </section>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer"></footer>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

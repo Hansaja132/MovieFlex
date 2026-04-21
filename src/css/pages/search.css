@@ -1,0 +1,31 @@
+.search-section {
+    padding-top: 2.1rem;
+}
+
+.search-form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+}
+
+.search-form input {
+    min-height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    outline: 0;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-main);
+    padding: 0 1rem;
+}
+
+.search-form input:focus {
+    border-color: rgba(234, 179, 8, 0.8);
+    box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.15);
+}
+
+@media (max-width: 640px) {
+    .search-form {
+        grid-template-columns: 1fr;
+    }
+}

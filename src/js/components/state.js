@@ -1,23 +1,27 @@
+const STATE_CLASSES = ["state--loading", "state--error", "state--empty"];
+
 export function setLoadingState(mount, message = "Loading...") {
-  if (!mount) return;
-  mount.className = "state state--loading";
-  mount.textContent = message;
+  setState(mount, "state--loading", message);
 }
 
 export function setErrorState(mount, message = "Something went wrong.") {
-  if (!mount) return;
-  mount.className = "state state--error";
-  mount.textContent = message;
+  setState(mount, "state--error", message);
 }
 
 export function setEmptyState(mount, message = "No items found.") {
-  if (!mount) return;
-  mount.className = "state state--empty";
-  mount.textContent = message;
+  setState(mount, "state--empty", message);
 }
 
 export function clearState(mount) {
   if (!mount) return;
-  mount.className = "state";
+  mount.classList.add("state");
+  mount.classList.remove(...STATE_CLASSES);
   mount.textContent = "";
+}
+
+function setState(mount, stateClass, message) {
+  if (!mount) return;
+  mount.classList.add("state", stateClass);
+  mount.classList.remove(...STATE_CLASSES.filter((value) => value !== stateClass));
+  mount.textContent = message;
 }

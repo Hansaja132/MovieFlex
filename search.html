@@ -5,13 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MovieFlex | Search</title>
     <meta name="description" content="Search for movies using TMDB." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://movieflex.ct.ws/search.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MovieFlex" />
+    <meta property="og:title" content="MovieFlex | Search" />
+    <meta property="og:description" content="Search for movies using TMDB." />
+    <meta property="og:url" content="https://movieflex.ct.ws/search.html" />
+    <meta property="og:image" content="https://movieflex.ct.ws/favicon.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="MovieFlex | Search" />
+    <meta name="twitter:description" content="Search for movies using TMDB." />
+    <meta name="twitter:image" content="https://movieflex.ct.ws/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="stylesheet" href="/src/css/main.css" />
   </head>
   <body data-page="search">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div id="app-shell">
       <header id="site-header"></header>
 
-      <main>
+      <main id="main-content">
         <section class="section search-section">
           <div class="container">
             <h1 class="section__title">Search Movies</h1>
@@ -29,6 +46,11 @@
 
             <div id="search-state" class="state" aria-live="polite"></div>
             <div id="search-results" class="movie-grid"></div>
+            <div class="section__actions">
+              <button id="search-load-more" class="btn btn--ghost load-more hidden" type="button">
+                Load more
+              </button>
+            </div>
           </div>
         </section>
       </main>

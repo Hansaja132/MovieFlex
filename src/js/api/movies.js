@@ -19,3 +19,7 @@ export async function searchMovies(query, page = 1) {
 export async function getMovieDetails(movieId) {
   return tmdbRequest(`/movie/${movieId}`);
 }
+
+export async function getMovieVideos(movieId) {
+  return tmdbRequest(`/movie/${movieId}/videos`);
+}

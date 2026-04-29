@@ -22,25 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Create TMDB config from secrets
-        env:
-          TMDB_BEARER_TOKEN: ${{ secrets.VITE_TMDB_BEARER_TOKEN }}
-        run: |
-          node -e 'const fs=require("node:fs");
-          const token=process.env.TMDB_BEARER_TOKEN||"";
-          const content=[
-            "export const TMDB_BASE_URL = \"https://api.themoviedb.org/3\";",
-            "export const TMDB_IMAGE_BASE_URL = \"https://image.tmdb.org/t/p\";",
-            "export const TMDB_BEARER_TOKEN = "+JSON.stringify(token)+";",
-            "",
-            "export function assertTmdbToken() {",
-            "  if (!TMDB_BEARER_TOKEN) {",
-            "    throw new Error(\"TMDB token is missing. Set VITE_TMDB_BEARER_TOKEN in GitHub secrets.\");",
-            "  }",
-            "}"
-          ].join("\n");
-          fs.writeFileSync("src/js/api/config.js", content);'
-
       - name: Build project
         run: npm run build
 

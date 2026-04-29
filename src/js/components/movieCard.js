@@ -1,11 +1,12 @@
 import { formatDate, formatRating, truncateText } from "../utils/format";
-import { getPosterUrl } from "../utils/images";
+import { getPosterSrcSet, getPosterUrl } from "../utils/images";
 
 export function createMovieCard(movie) {
   const title = movie.title || movie.name || "Untitled";
   const releaseDate = formatDate(movie.release_date || movie.first_air_date);
   const rating = formatRating(movie.vote_average);
   const overview = truncateText(movie.overview, 82);
+  const posterSrcSet = getPosterSrcSet(movie.poster_path);
 
   return `
     <article class="movie-card">
@@ -13,8 +14,11 @@ export function createMovieCard(movie) {
         <img
           class="movie-card__poster"
           src="${getPosterUrl(movie.poster_path)}"
+          ${posterSrcSet ? `srcset="${posterSrcSet}"` : ""}
+          sizes="(max-width: 600px) 46vw, (max-width: 960px) 30vw, 220px"
           alt="${escapeHtml(title)} poster"
           loading="lazy"
+          decoding="async"
         />
       </a>
       <div class="movie-card__body">
@@ -29,15 +33,20 @@ export function createMovieCard(movie) {
   `;
 }
 
-export function renderMovieGrid(mount, movies = []) {
+export function renderMovieGrid(mount, movies = [], { append = false } = {}) {
   if (!mount) return;
 
   if (!movies.length) {
-    mount.innerHTML = "";
+    if (!append) mount.innerHTML = "";
     return;
   }
 
-  mount.innerHTML = movies.map((movie) => createMovieCard(movie)).join("");
+  const markup = movies.map((movie) => createMovieCard(movie)).join("");
+  if (append) {
+    mount.insertAdjacentHTML("beforeend", markup);
+  } else {
+    mount.innerHTML = markup;
+  }
 }
 
 function escapeHtml(value) {

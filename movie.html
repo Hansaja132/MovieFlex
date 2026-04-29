@@ -5,13 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MovieFlex | Movie Details</title>
     <meta name="description" content="Detailed movie information from TMDB." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://movieflex.ct.ws/movie.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MovieFlex" />
+    <meta property="og:title" content="MovieFlex | Movie Details" />
+    <meta property="og:description" content="Detailed movie information from TMDB." />
+    <meta property="og:url" content="https://movieflex.ct.ws/movie.html" />
+    <meta property="og:image" content="https://movieflex.ct.ws/favicon.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="MovieFlex | Movie Details" />
+    <meta name="twitter:description" content="Detailed movie information from TMDB." />
+    <meta name="twitter:image" content="https://movieflex.ct.ws/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="stylesheet" href="/src/css/main.css" />
   </head>
   <body data-page="movie">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div id="app-shell">
       <header id="site-header"></header>
 
-      <main>
+      <main id="main-content">
         <section id="movie-backdrop" class="movie-backdrop">
           <div class="movie-backdrop__overlay"></div>
         </section>
@@ -33,9 +50,12 @@
                   <li><strong>Genres:</strong> <span id="movie-genres"></span></li>
                 </ul>
 
-                <section class="trailer-placeholder" aria-labelledby="trailer-title">
-                  <h2 id="trailer-title">Trailer</h2>
-                  <p>Trailer section placeholder. You can add TMDB videos integration later.</p>
+                <section class="movie-trailer" aria-labelledby="trailer-title">
+                  <div class="movie-trailer__header">
+                    <h2 id="trailer-title">Trailer</h2>
+                    <div id="trailer-state" class="state" aria-live="polite"></div>
+                  </div>
+                  <div id="movie-trailer" class="movie-trailer__frame"></div>
                 </section>
               </div>
             </article>

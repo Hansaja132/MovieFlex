@@ -5,15 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MovieFlex | Discover Movies</title>
     <meta name="description" content="Discover popular, now playing, and upcoming movies with MovieFlex." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://movieflex.ct.ws/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MovieFlex" />
+    <meta property="og:title" content="MovieFlex | Discover Movies" />
+    <meta property="og:description" content="Discover popular, now playing, and upcoming movies with MovieFlex." />
+    <meta property="og:url" content="https://movieflex.ct.ws/" />
+    <meta property="og:image" content="https://movieflex.ct.ws/favicon.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="MovieFlex | Discover Movies" />
+    <meta name="twitter:description" content="Discover popular, now playing, and upcoming movies with MovieFlex." />
+    <meta name="twitter:image" content="https://movieflex.ct.ws/favicon.png" />
     <meta name="google-site-verification" content="V4_fvW-zg92U15IgNOUpo2Oy4AlVP-JNNlONOVbyXHQ" />
-    <link rel="icon" type="image/png" href="./src/assets/favicon.png"/>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="stylesheet" href="/src/css/main.css" />
   </head>
   <body data-page="home">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div id="app-shell">
       <header id="site-header"></header>
 
-      <main>
+      <main id="main-content">
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero__overlay"></div>
           <div class="container hero__content">
@@ -32,6 +48,11 @@
             <h2 id="popular-title" class="section__title">Popular Movies</h2>
             <div id="popular-state" class="state" aria-live="polite"></div>
             <div id="popular-grid" class="movie-grid"></div>
+            <div class="section__actions">
+              <button id="popular-load-more" class="btn btn--ghost load-more hidden" type="button">
+                Load more
+              </button>
+            </div>
           </div>
         </section>
 
@@ -40,6 +61,11 @@
             <h2 id="now-playing-title" class="section__title">Latest / Now Playing</h2>
             <div id="now-playing-state" class="state" aria-live="polite"></div>
             <div id="now-playing-grid" class="movie-grid"></div>
+            <div class="section__actions">
+              <button id="now-playing-load-more" class="btn btn--ghost load-more hidden" type="button">
+                Load more
+              </button>
+            </div>
           </div>
         </section>
 
@@ -48,6 +74,11 @@
             <h2 id="upcoming-title" class="section__title">Upcoming Movies</h2>
             <div id="upcoming-state" class="state" aria-live="polite"></div>
             <div id="upcoming-grid" class="movie-grid"></div>
+            <div class="section__actions">
+              <button id="upcoming-load-more" class="btn btn--ghost load-more hidden" type="button">
+                Load more
+              </button>
+            </div>
           </div>
         </section>
       </main>

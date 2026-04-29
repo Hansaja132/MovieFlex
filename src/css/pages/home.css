@@ -66,3 +66,9 @@
         transform: translateY(0);
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__content {
+        animation: none;
+    }
+}

@@ -7,6 +7,22 @@ export function getPosterUrl(path, size = "w500") {
   return path ? `${TMDB_IMAGE_BASE_URL}/${size}${path}` : POSTER_PLACEHOLDER;
 }
 
+export function getPosterSrcSet(path, sizes = ["w342", "w500", "w780"]) {
+  if (!path) return "";
+  return sizes.map((size) => `${TMDB_IMAGE_BASE_URL}/${size}${path} ${size.slice(1)}w`).join(", ");
+}
+
 export function getBackdropUrl(path, size = "w1280") {
   return path ? `${TMDB_IMAGE_BASE_URL}/${size}${path}` : BACKDROP_PLACEHOLDER;
+}
+
+export function getBackdropSrcSet(path, sizes = ["w780", "w1280", "original"]) {
+  if (!path) return "";
+
+  return sizes
+    .map((size) => {
+      const width = size === "original" ? "2000w" : `${size.slice(1)}w`;
+      return `${TMDB_IMAGE_BASE_URL}/${size}${path} ${width}`;
+    })
+    .join(", ");
 }

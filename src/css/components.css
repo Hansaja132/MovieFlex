@@ -18,9 +18,26 @@
     box-shadow: 0 8px 18px rgba(217, 173, 51, 0.28);
 }
 
+.btn--ghost {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+}
+
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+}
+
 .btn:hover,
 .btn:focus-visible {
     transform: translateY(-1px);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
 }
 
 .movie-card {
@@ -96,5 +113,11 @@
 @keyframes spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .state--loading::before {
+        animation: none;
     }
 }

@@ -1,11 +1,18 @@
-import { TMDB_PROXY_BASE_URL, getPreferredLanguage } from "./config";
+import {
+  TMDB_API_KEY,
+  TMDB_BASE_URL,
+  TMDB_BEARER_TOKEN,
+  TMDB_PROXY_BASE_URL,
+  getPreferredLanguage
+} from "./config";
 
 const REQUEST_TIMEOUT_MS = 9000;
 const RETRY_LIMIT = 1;
 
 export async function tmdbRequest(path, params = {}) {
-  const url = buildProxyUrl(path, params);
-  const response = await fetchWithRetry(url.toString(), RETRY_LIMIT);
+  const useDirect = Boolean(TMDB_API_KEY || TMDB_BEARER_TOKEN);
+  const url = buildRequestUrl(path, params, useDirect);
+  const response = await fetchWithRetry(url.toString(), RETRY_LIMIT, useDirect);
 
   if (!response.ok) {
     const data = await safeJson(response);
@@ -16,28 +23,33 @@ export async function tmdbRequest(path, params = {}) {
   return response.json();
 }
 
-function buildProxyUrl(path, params) {
-  const baseUrl = new URL(TMDB_PROXY_BASE_URL, window.location.origin);
-  const basePath = baseUrl.pathname.replace(/\/$/, "");
+function buildRequestUrl(path, params, useDirect) {
+  const baseUrl = useDirect
+    ? new URL(TMDB_BASE_URL)
+    : new URL(TMDB_PROXY_BASE_URL, window.location.origin);
+  const basePath = useDirect ? baseUrl.pathname.replace(/\/$/, "") : baseUrl.pathname.replace(/\/$/, "");
   const url = new URL(`${basePath}${path}`, baseUrl);
   const searchParams = new URLSearchParams({ language: getPreferredLanguage(), ...params });
+  if (useDirect && TMDB_API_KEY) {
+    searchParams.set("api_key", TMDB_API_KEY);
+  }
   url.search = searchParams.toString();
   return url;
 }
 
-async function fetchWithRetry(url, retriesLeft) {
+async function fetchWithRetry(url, retriesLeft, useDirect) {
   try {
-    const response = await fetchWithTimeout(url, REQUEST_TIMEOUT_MS);
+    const response = await fetchWithTimeout(url, REQUEST_TIMEOUT_MS, useDirect);
     if (response.status >= 500 && retriesLeft > 0) {
       await wait(300);
-      return fetchWithRetry(url, retriesLeft - 1);
+      return fetchWithRetry(url, retriesLeft - 1, useDirect);
     }
 
     return response;
   } catch (error) {
     if (retriesLeft > 0) {
       await wait(300);
-      return fetchWithRetry(url, retriesLeft - 1);
+      return fetchWithRetry(url, retriesLeft - 1, useDirect);
     }
 
     if (error?.name === "AbortError") {
@@ -48,16 +60,20 @@ async function fetchWithRetry(url, retriesLeft) {
   }
 }
 
-async function fetchWithTimeout(url, timeoutMs) {
+async function fetchWithTimeout(url, timeoutMs, useDirect) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  const headers = {
+    Accept: "application/json"
+  };
+  if (useDirect && TMDB_BEARER_TOKEN) {
+    headers.Authorization = `Bearer ${TMDB_BEARER_TOKEN}`;
+  }
 
   try {
     return await fetch(url, {
       method: "GET",
-      headers: {
-        Accept: "application/json"
-      },
+      headers,
       signal: controller.signal
     });
   } finally {

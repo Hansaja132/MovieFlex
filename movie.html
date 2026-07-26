@@ -61,6 +61,47 @@
             </article>
           </div>
         </section>
+
+        <div class="ad-wrapper container">
+          <div class="ad-wrapper__label">Advertisement</div>
+          <script type="text/javascript">
+            (function() {
+              const width = window.innerWidth;
+              let key = '11e1cdd074c500a0b8bf56db21d2f335'; // Default: Mobile 320x50
+              let adWidth = 320;
+              let adHeight = 50;
+
+              if (width >= 800) {
+                key = '0a590ed146e6df3241507dce9b9730a8'; // Desktop: 728x90
+                adWidth = 728;
+                adHeight = 90;
+              } else if (width >= 500) {
+                key = 'e1fb49094ed731e904f94d2c5e9e4963'; // Tablet: 468x60
+                adWidth = 468;
+                adHeight = 60;
+              }
+
+              window.atOptions = {
+                'key': key,
+                'format': 'iframe',
+                'height': adHeight,
+                'width': adWidth,
+                'params': {}
+              };
+
+              const currentScript = document.currentScript;
+              const parent = currentScript.parentElement;
+              const adContent = document.createElement('div');
+              adContent.className = 'ad-wrapper__content';
+              parent.appendChild(adContent);
+
+              const script = document.createElement('script');
+              script.type = 'text/javascript';
+              script.src = 'https://divorceabetpiano.com/' + key + '/invoke.js';
+              adContent.appendChild(script);
+            })();
+          </script>
+        </div>
       </main>
 
       <footer id="site-footer"></footer>

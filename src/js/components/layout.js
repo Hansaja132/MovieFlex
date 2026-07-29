@@ -5,7 +5,8 @@ export function renderHeader() {
   const activePage = document.body?.dataset?.page || "";
   const navLinks = [
     { href: "index.html", label: "Home", page: "home" },
-    { href: "search.html", label: "Search", page: "search" }
+    { href: "search.html", label: "Search", page: "search" },
+    { href: "monetag.html", label: "Monetag", page: "monetag" }
   ];
 
   mount.className = "site-header";

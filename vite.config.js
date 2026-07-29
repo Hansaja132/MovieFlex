@@ -13,8 +13,7 @@ export default defineConfig(({ mode }) => {
         input: {
           main: resolve(__dirname, "index.html"),
           movie: resolve(__dirname, "movie.html"),
-          search: resolve(__dirname, "search.html"),
-          monetag: resolve(__dirname, "monetag.html")
+          search: resolve(__dirname, "search.html")
         }
       }
     },

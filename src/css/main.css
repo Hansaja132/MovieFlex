@@ -5,6 +5,7 @@
 @import "./pages/home.css";
 @import "./pages/movie.css";
 @import "./pages/search.css";
+@import "./pages/monetag.css";
 
 * {
     box-sizing: border-box;

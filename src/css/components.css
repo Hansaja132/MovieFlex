@@ -121,3 +121,36 @@
         animation: none;
     }
 }
+
+/* Advertisement Wrapper */
+.ad-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2.5rem auto;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-md);
+    text-align: center;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.ad-wrapper__label {
+    font-size: 0.65rem;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+}
+
+.ad-wrapper__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    width: 100%;
+}

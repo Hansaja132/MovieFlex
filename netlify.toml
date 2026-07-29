@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/api/tmdb/*"
+  to = "https://api.themoviedb.org/3/:splat"
+  status = 200
+  force = true
+  headers = { Authorization = "TMDB_TOKEN_PLACEHOLDER" }

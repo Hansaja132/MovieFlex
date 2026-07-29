@@ -2,6 +2,7 @@ import { renderFooter, renderHeader } from "./components/layout";
 import { initHomePage } from "./pages/home";
 import { initMoviePage } from "./pages/movie";
 import { initSearchPage } from "./pages/search";
+import { initMonetagPage } from "./pages/monetag";
 
 function init() {
   renderHeader();
@@ -21,6 +22,11 @@ function init() {
 
   if (page === "search") {
     initSearchPage();
+    return;
+  }
+
+  if (page === "monetag") {
+    initMonetagPage();
   }
 }
 
